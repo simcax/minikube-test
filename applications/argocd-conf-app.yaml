@@ -9,7 +9,7 @@ spec:
   source: 
     repoURL: https://github.com/simcax/minikube-test
     targetRevision: HEAD
-    path: applications
+    path: argocd/configuration
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
