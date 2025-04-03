@@ -8,13 +8,22 @@ spec:
   sources: 
   - repoURL: https://argoproj.github.io/argo-helm
     chart: argo/argo-cd
-    targetRevision: 7.8.21
+    targetRevision: v2.14.8
     helm:
       valueFiles:
       - $values/argocd/argo-values.yaml
   - repoURL: https://github.com/simcax/minikube-test
     targetRevision: main
     ref: values
+  syncPolicy:
+    syncOptions:
+    - "CreateNamespace=true"
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bitwarden-secrets-manager
   syncPolicy:
     syncOptions:
     - "CreateNamespace=true"
