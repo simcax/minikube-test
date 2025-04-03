@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-seed
+  namespace: argocd
+spec:
+  project: default
+
+  source: 
+    repoURL: https://github.com/simcax/minikube-test
+    targetRevision: HEAD
+    path: seed
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
