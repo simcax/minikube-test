@@ -11,7 +11,7 @@ spec:
     targetRevision: v1.17.0
     helm:
       valueFiles:
-      - $values/cert-manager/cert-manager-values.yaml
+      - $values/application-values/cert-manager-values.yaml
   - repoURL: https://github.com/simcax/minikube-test
     targetRevision: main
     ref: values
