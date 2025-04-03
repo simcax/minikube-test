@@ -23,7 +23,7 @@ spec:
       prune: true
   destination:
     server: https://kubernetes.default.svc
-    namespace: bitwarden-secrets-manager
+    namespace: argocd
   syncPolicy:
     syncOptions:
     - "CreateNamespace=true"
