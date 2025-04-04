@@ -7,7 +7,7 @@ spec:
   project: default
   sources: 
   - repoURL: https://perses.github.io/helm-charts
-    chart: opentelemetry-operator
+    chart: perses
     targetRevision: 0.13.1
     helm:
       valueFiles:
