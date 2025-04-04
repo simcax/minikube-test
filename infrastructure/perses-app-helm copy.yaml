@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: perses-helm
+  namespace: argocd
+spec:
+  project: default
+  sources: 
+  - repoURL: https://perses.github.io/helm-charts
+    chart: opentelemetry-operator
+    targetRevision: 0.13.1
+    helm:
+      valueFiles:
+      - $values/application-values/perses-values.yaml
+  - repoURL: https://github.com/simcax/minikube-test
+    targetRevision: main
+    ref: values
+  syncPolicy:
+    syncOptions:
+    - "CreateNamespace=true"
+    automated:
+      selfHeal: true
+      prune: true
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: perses
+  syncPolicy:
+    syncOptions:
+    - "CreateNamespace=true"
+    automated:
+      selfHeal: true
+      prune: true
